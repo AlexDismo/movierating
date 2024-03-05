@@ -1,0 +1,11 @@
+name: LowCinema
+recipe: lamp
+config:
+  php: 8.2
+  webroot: public
+services:
+  phpmyadmin:
+    type: phpmyadmin
+events:
+  post-create:
+    - ln -s $PWD/storage $PWD/public/storage

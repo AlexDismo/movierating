@@ -1,0 +1,74 @@
+.poster{
+    margin: 60px auto 0 auto;
+    width: 1200px;
+    height: 200px;
+    border-radius: 14px;
+    background: rgba(20, 21, 28, 0.50);
+    backdrop-filter: blur(12.5px);
+
+}
+.poster-section{
+    display: flex;
+}
+
+.poster-info{
+    display: flex;
+    flex-direction: column;
+    padding: 63px 0 0 104px;
+}
+.poster-info-menu{
+    margin-top:20px;
+    display: inline-flex;
+    gap: 20px;
+    padding: 0;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    user-select: none;
+}
+.poster-cards{
+    display: flex;
+    gap: 48px;
+    padding-left: 50px;
+}
+.poster-cards-item{
+    display: inline-flex;
+    width: 160px;
+    height: 213px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+    margin: -17px 0;
+}
+.poster-cards-item:hover{
+    background: rgba(255, 255, 255, 0.10);
+}
+.poster-cards-item img{
+    width: 140px;
+    height: 193px;
+    border-radius: 14px;
+}
+.poster-button{
+    width: 160px;
+    color: white;
+    border-radius: 14px;
+    background: #2C4DFF;
+    backdrop-filter: blur(12.5px);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin:auto;
+}
+
+.poster-button:hover{
+    background: #2C1DFF;
+}

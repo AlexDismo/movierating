@@ -1,0 +1,23 @@
+.container{
+    width: 1200px;
+}
+:root {
+    --main-bg-color: #111;
+    --main-text-color: #FFF;
+    --secondary-text-color: rgba(255, 153, 0, 0.50);
+}
+body {
+    background-color: var(--main-bg-color);
+    font-family: Inter, serif;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-color{
+    color: var(--main-text-color);
+}
+.secondary-color{
+    color: var(--secondary-text-color);
+}
+

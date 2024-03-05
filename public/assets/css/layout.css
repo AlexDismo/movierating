@@ -1,0 +1,125 @@
+.header{
+    background: rgba(20, 21, 28, 0.4);
+    backdrop-filter: blur(12.5px);
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    width: 100%;
+    position: fixed;
+    height: 60px;
+    padding: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-container{
+    padding: 5px;
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-block-left{
+    display: flex;
+    align-items: center;
+
+}
+.header-logo{
+    width: 160px;
+    margin-right: 48px;
+}
+.header-menu{
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+.header-menu ul{
+    display: flex;
+    margin: auto 0;
+    gap: 0.65em;
+
+}
+.header-menu a{
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+.header-menu span:hover{
+    color: #9a5fa4;
+}
+.header-block-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3rem;
+    text-align: end;
+}
+.header-status{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.header-btn{
+    border-radius: 14px;
+    background: #2C4DFF;
+    backdrop-filter: blur(12.5px);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    column-gap: 0.5rem;
+}
+.header-btn span{
+    color: white;
+}
+.header-btn:hover{
+    background: #2C1DFF;
+}
+.header-search form{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    width: 264px;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 14px;
+    background: rgba(25, 27, 40, 0.25);
+    backdrop-filter: blur(12.5px);
+}
+.header-search__btn,
+.header-search__input {
+    background: transparent;
+}
+.footer{
+    background: rgba(20, 21, 28, 0.40);
+    backdrop-filter: blur(12.5px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+
+}
+.footer-container{
+    padding: 40px 0;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 48px;
+}
+.footer-menu h1{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.footer-menu ul li:not(:last-child) {
+    margin-bottom: 20px;
+}

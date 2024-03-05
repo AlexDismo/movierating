@@ -1,0 +1,73 @@
+.carousel{
+    margin-top:80px;
+    width:100%;
+    position: relative;
+}
+.carousel-container{
+    margin: 0 auto;
+    width: 1200px;
+    height: 500px;
+}
+.carousel-section{
+    height: 100%;
+    width: 100%;
+    border-radius: 14px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    object-fit: cover;
+}
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 14px;
+    background: rgba(20, 21, 28, 0.80);
+    backdrop-filter: blur(12.5px);
+    padding: 40px 10px;
+    color: white;
+}
+
+.carousel-button-prev {
+    left: calc(((100vw - 1200px) / 2) - 22px);
+}
+
+.carousel-button-next {
+    right: calc(((100vw - 1200px) / 2) - 22px);
+}
+
+.carousel-button:hover {
+    background: rgba(20, 21, 28, 0.50);
+}
+
+.carousel-section{
+    height: 100%;
+    width: 100%;
+    border-radius: 14px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* increase transition duration for slower fading */
+}
+
+.blur-section-1,
+.blur-section-2 {
+    position: absolute;
+    bottom: 0;
+    top: 350px;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    opacity: .69;
+    filter: blur(237px);
+    z-index: -15;
+    width: 541px;
+    height: 476px;
+}
+.blur-section-1 {
+    background: #076DE5;
+    left: 0;
+}
+.blur-section-2 {
+    background:#07BDE5;
+    right: 0;
+}

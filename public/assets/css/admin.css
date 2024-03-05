@@ -1,0 +1,135 @@
+.input{
+    display: flex;
+    width: 264px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    border: 1px solid white;
+    background: rgba(25, 27, 40, 1);
+}
+.form-block{
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+.movie-form-description textarea{
+    color: white;
+}
+.movie-form-categories select{
+    background: rgba(25, 27, 40, 1);
+}
+.movie-form-buttons button{
+    border-radius: 14px;
+    background: #2C4DFF;
+    cursor: pointer;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.movie-form-categories option.selected {
+    background-color: #9a5fa4;
+}
+input[type="checkbox"]:checked + label {
+    color: #9a5fa4;
+}
+.admincontent-movies{
+    display: flex;
+    flex-direction: column;
+}
+.admin-container{
+    position: relative;
+    margin: 80px auto;
+    border-radius: 14px;
+    background: rgba(20, 21, 28, 0.40);
+    backdrop-filter: blur(12.5px);
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    z-index: 2;
+    padding: 104px 104px 0 104px;
+    gap: 48px;
+}
+
+.category-container{
+    margin: 80px auto;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-title{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.admin-divider{
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.admin-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-subtitle{
+    font-size: 20px;
+    color: #666;
+}
+
+.admin-add-button{
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.admin-flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    gap:12px;
+    justify-content: flex-start;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.category-name {
+    flex-grow: 1;
+}
+
+.category-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-action button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.category-action {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.category-action:hover {
+    text-decoration: underline;
+}
