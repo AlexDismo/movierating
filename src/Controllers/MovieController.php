@@ -47,17 +47,47 @@ class MovieController extends Controller
 
         $this->service()->store(
             $this->request()->input('name'),
-            $this->request()->input('description'),
-            $this->request()->input('budget'),
             $this->request()->input('country'),
-            $this->request()->input('duration'),
+            $this->request()->input('release_date'),
             $this->request()->input('age_limit'),
+            $this->request()->input('budget'),
+            $this->request()->input('duration'),
+            $this->request()->input('description'),
             $this->request()->file('image'),
             $this->request()->input('categories'),
             $this->request()->input('actors')
         );
 
         $this->redirect('/admin');
+    }
+
+    public function profile(): void
+    {
+        $userId = $this->auth()->user()->id();
+
+        $watchedMovies = $this->service()->getWatchedMovies($userId);
+        $watchlistMovies = $this->service()->getWatchlistMovies($userId);
+
+        $this->view('profile', [
+            'watchedMovies' => $watchedMovies,
+            'watchlistMovies' => $watchlistMovies
+        ], "Profile - {$this->auth()->user()->name()}");
+    }
+
+    public function movies(): void
+    {
+        $page = $this->request()->input('page', 1);
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
+        $categoryId = $this->request()->input('category');
+        $totalMovies = $this->service()->count($categoryId);
+
+        $this->view('movies', [
+            'movies' => $this->service()->new($limit, $offset, $categoryId),
+            'page' => $page,
+            'totalMovies' => $totalMovies,
+            'limit' => $limit
+        ], 'Movies');
     }
 
     public function destroy(): void
@@ -70,14 +100,17 @@ class MovieController extends Controller
     public function edit(): void
     {
         $categories = new CategoryService($this->db());
-
         $actors = new ActorService($this->db());
+        $movieService = new MovieService($this->db(), $this->auth());
 
+        $movieId = $this->request()->input('id');
+        $movieActorIds = $movieService->getActorIdsForMovie($movieId);
 
         $this->view('admin/movies/update', [
-            'movie' => $this->service()->find($this->request()->input('id')),
+            'movie' => $movieService->find($movieId),
             'categories' => $categories->all(),
             'actors' => $actors->all(),
+            'movieActorIds' => $movieActorIds,
         ]);
     }
 
@@ -97,21 +130,18 @@ class MovieController extends Controller
             $this->redirect("/admin/movies/update?id={$this->request()->input('id')}");
         }
 
-        $categories = $this->request()->input('categories');
-
-        $actors = $this->request()->input('actors');
-
         $this->service()->update(
             $this->request()->input('id'),
             $this->request()->input('name'),
+            $this->request()->input('release_date'),
             $this->request()->input('country'),
             $this->request()->input('age_limit'),
             $this->request()->input('budget'),
             $this->request()->input('duration'),
             $this->request()->input('description'),
             $this->request()->file('image'),
-            $categories,
-            $actors
+            $this->request()->input('categories'),
+            $this->request()->input('actors')
         );
 
         $this->redirect('/admin');
@@ -126,12 +156,21 @@ class MovieController extends Controller
         ], "Movie - {$movie->name()}");
     }
 
+    public function updateUserStatus(): void
+    {
+        $status = $this->request()->input('status');
+        $movieId = $this->request()->input('movie_id');
+        $this->service()->updateUserStatus($status, $movieId);
+        $this->redirect("/movie?id={$movieId}");
+    }
+
     private function service(): MovieService
     {
         if (! isset($this->service)) {
-            $this->service = new MovieService($this->db());
+            $this->service = new MovieService($this->db(), $this->auth());
         }
 
         return $this->service;
     }
+
 }

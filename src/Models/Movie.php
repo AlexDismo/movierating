@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Movie
+class  Movie
 {
 
     public function __construct(
@@ -11,12 +11,16 @@ class Movie
         private string $description,
         private int $budget,
         private int $age_limit,
+        private string $release_date,
         private string $country,
         private int $duration,
         private string $preview,
         private string $createdAt,
+        private ?string $user_status,
         private array $categories = [],
-        private array $actors = []
+        private array $actors = [],
+        private array $reviews = [],
+
     ) {
     }
 
@@ -38,6 +42,11 @@ class Movie
     public function actors(): array
     {
         return $this->actors;
+    }
+
+    public function release_date() : string
+    {
+        return $this->release_date;
     }
 
     public function description(): string
@@ -78,21 +87,26 @@ class Movie
     /**
      * @return array<Review>
      */
-//    public function reviews(): array
-//    {
-//        return $this->reviews;
-//    }
+    public function reviews(): array
+    {
+        return $this->reviews;
+    }
 
-//    public function avgRating(): float
-//    {
-//        $ratings = array_map(function (Review $review) {
-//            return $review->rating();
-//        }, $this->reviews);
-//
-//        if (count($ratings) === 0) {
-//            return 0;
-//        }
-//
-//        return round(array_sum($ratings) / count($ratings), 1);
-//    }
+    public function avgRating(): float
+    {
+        $ratings = array_map(function (Review $review) {
+            return $review->rating();
+        }, $this->reviews);
+
+        if (count($ratings) === 0) {
+            return 0;
+        }
+
+        return round(array_sum($ratings) / count($ratings), 1);
+    }
+
+    public function user_status(): string
+    {
+        return $this->user_status;
+    }
 }

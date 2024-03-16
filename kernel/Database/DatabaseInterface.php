@@ -13,4 +13,6 @@ interface DatabaseInterface
     public function delete(string $table, array $conditions = []): void;
 
     public function update(string $table, array $data, array $conditions = []): void;
+
+    public function query(string $sql, array $params = []): array;
 }

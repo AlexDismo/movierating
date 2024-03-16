@@ -53,7 +53,7 @@ class Database implements DatabaseInterface
         return $result ?: null;
     }
 
-    public function get(string $table, array $conditions = [], array $order = [], int $limit = -1): array
+    public function get(string $table, array $conditions = [], array $order = [], int $limit = -1, int $offset = 0): array
     {
         $where = '';
 
@@ -69,6 +69,10 @@ class Database implements DatabaseInterface
 
         if ($limit > 0) {
             $sql .= " LIMIT $limit";
+        }
+
+        if ($offset > 0) {
+            $sql .= " OFFSET $offset";
         }
 
         $stmt = $this->pdo->prepare($sql);
@@ -131,5 +135,12 @@ class Database implements DatabaseInterface
         } catch (\PDOException $exception) {
             exit("Database connection failed: {$exception->getMessage()}");
         }
+    }
+
+    public function query(string $sql, array $params = []): array
+    {
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

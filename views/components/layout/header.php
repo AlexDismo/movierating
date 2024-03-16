@@ -27,13 +27,13 @@ $user = $auth->user();
                         </li>
 
                         <li>
-                            <a href="/best">
+                            <a href="/categories">
                                 <span>Genres</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="/categories">
+                            <a href="/actors">
                                 <span>Actors</span>
                             </a>
                         </li>

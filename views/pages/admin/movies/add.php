@@ -80,6 +80,22 @@
                 <div class="movie-form-title form-block">
                     <input
                             type="text"
+                            class="input <?php echo $session->has('release_date') ? 'is-invalid' : '' ?>"
+                            id="release_date"
+                            name="release_date"
+                            placeholder=""
+                    >
+                    <label for="name">Release</label>
+                    <?php if ($session->has('release_date')) { ?>
+                        <div id="release_date" class="invalid-feedback">
+                            <?php echo $session->getFlash('release_date')[0] ?>
+                        </div>
+                    <?php } ?>
+                </div>
+
+                <div class="movie-form-title form-block">
+                    <input
+                            type="text"
                             class="input <?php echo $session->has('name') ? 'is-invalid' : '' ?>"
                             id="budget"
                             name="budget"
@@ -122,7 +138,7 @@
 
                 <div class="movie-form-categories form-block">
                     <?php foreach ($actors as $actor) { ?>
-                        <div>
+                        <div style="display: flex; flex-direction: column">
                             <input type="checkbox" id="actor-<?php echo $actor->id() ?>" name="actors[]" value="<?php echo $actor->id() ?>">
                             <label for="actor-<?php echo $actor->id() ?>"><?php echo $actor->name() ?></label>
                             <div class="homecontent-cards__item" style="margin-top:10px">

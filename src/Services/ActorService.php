@@ -47,6 +47,25 @@ class ActorService
         }, $actors);
     }
 
+    public function getActors(int $limit, int $offset): array
+    {
+        $actors = $this->db->get('actors', [], ['id' => 'DESC'], $limit, $offset);
+
+        return array_map(function ($actor) {
+            return new Actor(
+                $actor['id'],
+                $actor['name'],
+                $actor['age'],
+                $actor['biography'],
+                $actor['country'],
+                $actor['avatar'],
+            );
+        }, $actors);
+    }
+    public function count(): int
+    {
+        return $this->db->query('SELECT COUNT(*) as count FROM actors')[0]['count'];
+    }
 
     public function destroy(int $id): void
     {

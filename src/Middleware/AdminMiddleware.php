@@ -4,11 +4,11 @@ namespace App\Middleware;
 
 use App\Kernel\Middleware\AbstractMiddleware;
 
-class GuestMiddleware extends AbstractMiddleware
+class AdminMiddleware extends AbstractMiddleware
 {
     public function handle(): void
     {
-        if ($this->auth->check()) {
+        if ($this->auth->isAdmin()) {
             $this->redirect->to('/');
         }
     }

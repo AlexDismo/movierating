@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\Kernel\Auth\AuthInterface $auth
+ */
+?>
+
 <section class="poster">
     <div class="">
         <div class="poster-section">
@@ -26,9 +32,18 @@
                 </div>
             </div>
 
-            <a href="/login" type="button" class="poster-button">
-                <span>Sign in</span>
-            </a>
+            <?php if ($auth->check()) { ?>
+                <a href="/best" type="button" class="poster-button">
+                    <span>Best titles</span>
+                </a>
+            <?php } else { ?>
+                <a href="/login" type="button" class="poster-button">
+                    <span>Sign in</span>
+                </a>
+            <?php } ?>
+
+
+
 
         </div>
     </div>

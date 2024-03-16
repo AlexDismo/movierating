@@ -102,6 +102,24 @@ class ActorController extends Controller
 
         return $this->service;
     }
+
+    public function actors(): void
+    {
+        $page = $this->request()->input('page', 1); // Получаем текущую страницу из запроса
+        $limit = 10; // Устанавливаем количество актеров на странице
+        $offset = ($page - 1) * $limit; // Вычисляем смещение для запроса в базу данных
+        $totalActors = $this->service()->count(); // Получаем общее количество актеров
+
+        $actors = $this->service()->getActors($limit, $offset); // Получаем актеров для текущей страницы
+
+        $this->view('actors', [
+            'actors' => $actors,
+            'page' => $page,
+            'totalActors' => $totalActors,
+            'limit' => $limit
+        ]);
+    }
+
 }
 
 

@@ -21,6 +21,8 @@ class CategoryController extends Controller
         $this->view('admin/categories/add');
     }
 
+
+
     public function store(): void
     {
         $validation = $this->request()->validate([
@@ -38,6 +40,15 @@ class CategoryController extends Controller
         $this->service()->store($this->request()->input('name'));
 
         $this->redirect('/admin');
+    }
+
+    public function categories(): void
+    {
+        $categories = $this->service()->all();
+
+        $this->view('categories', [
+            'categories' => $categories
+        ], 'Categories');
     }
 
     public function destroy(): void

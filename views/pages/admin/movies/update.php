@@ -6,6 +6,7 @@
  * @var array<\App\Models\Actor> $actors
  * @var \App\Models\Movie $movie
  * @var \App\Kernel\Storage\StorageInterface $storage
+ * @var array<int> $movieActorIds
  */
 ?>
 
@@ -87,6 +88,23 @@
             <div class="movie-form-title form-block">
                 <input
                         type="text"
+                        class="input <?php echo $session->has('release_date') ? 'is-invalid' : '' ?>"
+                        id="release_date"
+                        name="release_date"
+                        placeholder=""
+                        value="<?php echo $movie->release_date() ?>"
+                >
+                <label for="name">Release</label>
+                <?php if ($session->has('release_date')) { ?>
+                    <div id="release_date" class="invalid-feedback">
+                        <?php echo $session->getFlash('release_date')[0] ?>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <div class="movie-form-title form-block">
+                <input
+                        type="text"
                         class="input <?php echo $session->has('name') ? 'is-invalid' : '' ?>"
                         id="budget"
                         name="budget"
@@ -123,10 +141,15 @@
 
             <div class="movie-form-categories form-block">
                 <?php foreach ($actors as $actor) { ?>
-                    <div>
-                        <input type="checkbox" id="actor-<?php echo $actor->id() ?>" name="actors[]" value="<?php echo $actor->id() ?>"
-                            <?php if (in_array($actor->name(), $movie->actors())) echo 'checked' ?>>
-                        <label for="actor-<?php echo $actor->id() ?>"><?php echo $actor->name() ?></label>
+                    <div style="display: flex; flex-direction: column">
+                        <input
+                                type="checkbox"
+                                id="actor_<?php echo $actor->id() ?>"
+                                name="actors[]"
+                                value="<?php echo $actor->id() ?>"
+                            <?php echo in_array($actor->id(), $movieActorIds) ? 'checked' : '' ?>
+                        >
+                        <label for="actor_<?php echo $actor->id() ?>"><?php echo $actor->name() ?></label>
                         <div class="homecontent-cards__item" style="margin-top:10px">
                             <div class="homecontent-cards__item-img"><img alt="<?php echo $actor->name() ?>" src="<?php echo $storage->url($actor->avatar()) ?>" /></div>
                         </div>

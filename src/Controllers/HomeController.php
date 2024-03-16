@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(): void
     {
-        $movies = new MovieService($this->db());
+        $movies = new MovieService($this->db(), $this->auth());
 
         $this->view('home', [
             'movies' => $movies->new(),

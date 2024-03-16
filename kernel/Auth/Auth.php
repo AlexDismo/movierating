@@ -90,4 +90,20 @@ class Auth implements AuthInterface
     {
         return $this->session->get($this->sessionField());
     }
+
+    public function isAdmin(): bool
+    {
+        if ($this->check()) {
+            return false;
+        }
+
+        $user = $this->db->first($this->table(), [
+            'id' => $this->session->get($this->sessionField()),
+        ]);
+
+        if (!$user['is_admin']){
+            return true;
+        }
+        return false;
+    }
 }

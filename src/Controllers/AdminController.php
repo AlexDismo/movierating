@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function index(): void
     {
         $categories = new CategoryService($this->db());
-        $movies = new MovieService($this->db());
+        $movies = new MovieService($this->db(), $this->auth());
         $actors = new ActorService($this->db());
 
         $this->view('admin/index', [
