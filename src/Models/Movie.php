@@ -68,7 +68,7 @@ class  Movie
         return $this->country;
     }
 
-    public function duration(): string
+    public function duration(): int
     {
         return $this->duration;
     }

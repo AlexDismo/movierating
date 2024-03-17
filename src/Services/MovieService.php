@@ -187,11 +187,9 @@ class MovieService
     {
         $user = $this->auth->user();
 
-        // Проверяем, существует ли запись
         $record = $this->db->first('users_movies', ['user_id' => $user->id(), 'movie_id' => $movieId]);
 
         if ($record) {
-            // Если запись существует, обновляем ее
             $this->db->update('users_movies', ['data' => $status], ['user_id' => $user->id(), 'movie_id' => $movieId]);
         } else {
             // Если записи не существует, создаем новую
@@ -288,8 +286,9 @@ class MovieService
             $description = $movie['description'] ?? null;
             $budget = $movie['budget'] ?? null;
             $age_limit = $movie['age_limit'] ?? null;
+            $release_date = $movie['realease_date'] ?? "1488";
             $country = $movie['country'] ?? null;
-            $duration = $movie['duration'] ?? null;
+            $duration = $movie['duration'] ?? 111;
             $preview = $movie['preview'] ?? null;
             $created_at = $movie['created_at'] ?? null;
             $user_status = $movie['user_status'] ?? '0000';
@@ -303,6 +302,7 @@ class MovieService
                 $description,
                 $budget,
                 $age_limit,
+                $release_date,
                 $country,
                 $duration,
                 $preview,

@@ -22,16 +22,20 @@
 
             <div id="Watched" class="tabcontent">
                 <h1>Watched Movies</h1>
+                <div class="tabcontent_movies">
                 <?php foreach ($watchedMovies as $movie): ?>
                     <?php $view->component('movie', ['movie' => $movie]) ?>
                 <?php endforeach; ?>
+                </div>
             </div>
 
             <div id="Watchlist" class="tabcontent">
                 <h1>Watchlist Movies</h1>
-                <?php foreach ($watchlistMovies as $movie): ?>
-                    <?php $view->component('movie', ['movie' => $movie]) ?>
-                <?php endforeach; ?>
+                <div class="tabcontent_movies">
+                    <?php foreach ($watchlistMovies as $movie): ?>
+                        <?php $view->component('movie', ['movie' => $movie]) ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
         </div>

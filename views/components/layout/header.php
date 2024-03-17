@@ -62,7 +62,7 @@ $user = $auth->user();
                     <?php if ($auth->check()) { ?>
                         <div class="header-status">
                             <div>
-                                <p><?php echo $user->name() ?></p>
+                                <a href="/profile"><p><?php echo $user->name() ?></p></a>
                             </div>
                             <form action="/logout" method="post">
                                 <button class="header-btn">

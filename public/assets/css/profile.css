@@ -51,3 +51,9 @@
 .tabcontent *{
     margin: 5px;
 }
+.tabcontent_movies{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
